@@ -4,22 +4,36 @@ import { GenerateButton } from './index';
 import stockImg from '../assests/homescreen.jpg';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ hasBusiness: boolean }>`
+  height: ${(props) => (!props.hasBusiness ? '90vh' : 'min-content')};
+  overflow: ${(props) => (!props.hasBusiness ? 'hidden' : 'inherit')};
+`;
+
+const StockImage = styled.img`
+  overflow: hidden;
+  height: 100%;
+  opacity: 0.7;
+`;
+
+const BusinessImage = styled.img`
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 35vh;
+  opacity: 0.5;
 `;
 
 export const RandomGenerator = () => {
   const { business } = useContext(BusinessContext);
   return (
-    <Wrapper>
+    <Wrapper hasBusiness={business ? true : false}>
       <GenerateButton />
       {!business ? (
-        <img src={stockImg} alt="Black bean salad" />
+        <StockImage src={stockImg} alt="Black bean salad" />
       ) : (
-        <div>
-          <img src={business.photos[0]} alt="Restaurant food and ambience" />
-        </div>
+        <BusinessImage
+          src={business.photos[0]}
+          alt="Restaurant food and ambience"
+        />
       )}
     </Wrapper>
   );

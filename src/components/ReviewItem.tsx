@@ -5,18 +5,24 @@ import { formatDate } from '../lib/utils';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  width: 90vw;
-  margin: 0 auto;
-  padding: 5px 10px;
+  box-shadow: 0px 0px 15px 0px #777;
+  padding: 1em;
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
-  font-size: 16px;
+const ReviewText = styled.div`
   font-style: italic;
-  font-weight: 300;
-  line-height: 20px;
+  line-height: 1.5em;
+  margin: 1em 0;
+  font-size: 14px;
+`;
 
-  background-color: #fffffd;
-  box-shadow: 0px 5px 20px 3px rgb(239, 220, 179);
-  border-radius: 20px 20px 0px 0px;
+const PostDate = styled.div`
+  font-size: 12px;
 `;
 
 export const ReviewItem: FC<{ review: YelpReview }> = ({ review }) => {
@@ -26,8 +32,8 @@ export const ReviewItem: FC<{ review: YelpReview }> = ({ review }) => {
   return (
     <Wrapper>
       <StarRating rating={rating} />
-      <p>{text}</p>
-      <p>Posted: {postDate}</p>
+      <ReviewText>"{text}"</ReviewText>
+      <PostDate>Posted: {postDate}</PostDate>
     </Wrapper>
   );
 };

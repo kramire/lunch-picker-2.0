@@ -14,7 +14,7 @@ export async function handler(event: APIGatewayEvent, context: Context) {
       })
       .then((res: any) => res.data);
 
-    const location = {
+    const business = {
       name: data.name,
       address: data.location['display_address'],
       phone: data['display_phone'],
@@ -31,7 +31,7 @@ export async function handler(event: APIGatewayEvent, context: Context) {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
         },
-      body: JSON.stringify(location),
+      body: JSON.stringify(business),
     };
   } catch (e) {
     throw new Error(e.response.data.error.description);

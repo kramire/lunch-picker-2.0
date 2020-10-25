@@ -3,8 +3,8 @@ import { YelpBusiness } from '../contexts/base';
 export const pickRandomBusiness = (
   businesses: YelpBusiness[]
 ): YelpBusiness => {
-  const locationCount = businesses.length;
-  const randomIndex = Math.floor(Math.random() * locationCount);
+  const businessCount = businesses.length;
+  const randomIndex = Math.floor(Math.random() * businessCount);
   return businesses[randomIndex];
 };
 

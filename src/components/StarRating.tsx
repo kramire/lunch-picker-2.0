@@ -5,5 +5,5 @@ export const StarRating: FC<{ rating: number }> = ({ rating }) => {
   for (let i = 0; i < rating; i++) {
     stars.push(<span className="fa fa-star" key={i} />);
   }
-  return <>{stars}</>;
+  return <div>{stars}</div>;
 };

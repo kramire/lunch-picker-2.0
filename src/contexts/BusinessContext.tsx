@@ -37,11 +37,11 @@ export const BusinessContextProvider: FC = ({ children }) => {
   const getBusinessDetails = async (business: YelpBusiness) => {
     setIsFetchingBusiness(true);
     const detailsResponse = await axios.get(
-      `${baseUrl}/getLocationDetails?yelpId=${business.yelp_id}`
+      `${baseUrl}/getBusinessDetails?yelpId=${business.yelp_id}`
     );
     setBusiness(detailsResponse.data);
     const reviewResponse = await axios.get(
-      `${baseUrl}/getReview?yelpId=${business.yelp_id}`
+      `${baseUrl}/getReviews?yelpId=${business.yelp_id}`
     );
     setReviews(reviewResponse.data);
     setIsFetchingBusiness(false);
