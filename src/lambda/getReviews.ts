@@ -8,11 +8,17 @@ export async function handler(event: APIGatewayEvent, context: Context) {
   try {
     const data = await axios
       .get(url, {
-        headers: { Authorization: `Bearer ${process.env.YELP_TOKEN}` },
+        headers: { 
+          Authorization: `Bearer ${process.env.YELP_TOKEN}`, 
+        },
       })
       .then((res: any) => res.data);
     return {
       statusCode: 200,
+      headers: { 
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        },
       body: JSON.stringify(data.reviews),
     };
   } catch (e) {

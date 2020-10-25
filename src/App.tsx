@@ -1,7 +1,14 @@
 import React from 'react';
+import { BusinessContextProvider } from './contexts/BusinessContext';
+import { RandomGenerator, BusinessDetails, ReviewList } from './components';
 
-function App() {
-  return <div>App</div>;
-}
-
-export default App;
+export const App = () => {
+  return (
+    <BusinessContextProvider>
+      <h1>lunch picker</h1>
+      <RandomGenerator />
+      <BusinessDetails />
+      <ReviewList />
+    </BusinessContextProvider>
+  );
+};

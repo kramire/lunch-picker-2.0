@@ -8,11 +8,14 @@ export async function handler(event: APIGatewayEvent, context: Context) {
   try {
     const data = await axios
       .get(url, {
-        headers: { Authorization: `Bearer ${process.env.YELP_TOKEN}` },
+        headers: {
+          Authorization: `Bearer ${process.env.YELP_TOKEN}`, 
+        },
       })
       .then((res: any) => res.data);
 
     const location = {
+      name: data.name,
       address: data.location['display_address'],
       phone: data['display_phone'],
       website: data.url,
@@ -24,6 +27,10 @@ export async function handler(event: APIGatewayEvent, context: Context) {
 
     return {
       statusCode: 200,
+      headers: { 
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        },
       body: JSON.stringify(location),
     };
   } catch (e) {
