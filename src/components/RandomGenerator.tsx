@@ -20,6 +20,7 @@ const BusinessImage = styled.img`
   overflow: hidden;
   height: 35vh;
   opacity: 0.5;
+  object-fit: cover;
 `;
 
 export const RandomGenerator = () => {

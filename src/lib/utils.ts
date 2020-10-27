@@ -9,7 +9,7 @@ export const pickRandomBusiness = (
 };
 
 export const formatDate = (strDate: string): string => {
-  const dateObj = new Date(strDate);
+  const dateObj = new Date(strDate.replace(/\s/, 'T') + 'Z');
   const month = dateObj.getMonth() + 1;
   const day = dateObj.getDate();
   const year = dateObj.getFullYear();
