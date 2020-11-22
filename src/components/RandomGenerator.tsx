@@ -13,6 +13,11 @@ const StockImage = styled.img`
   overflow: hidden;
   height: 100%;
   opacity: 0.7;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    object-fit: cover;
+  }
 `;
 
 const BusinessImage = styled.img`

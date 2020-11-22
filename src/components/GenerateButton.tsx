@@ -2,17 +2,15 @@ import React, { useContext } from 'react';
 import { BusinessContext } from '../contexts/BusinessContext';
 import { useSpring, animated } from 'react-spring';
 import { pickRandomBusiness } from '../lib/utils';
-import { YelpBusiness } from '../contexts/base';
 import styled from 'styled-components';
 
-const AnimatedButton = styled(animated.button)`
-  width: 44vw;
-  height: 44vw;
-  margin: 20px 0;
+const AnimatedButton = styled(animated.button)<{ $hasBusiness: boolean }>`
+  width: 7em;
+  height: 7em;
 
   position: absolute;
-  top: 12vh;
-  left: calc((100vw - 44vw) / 2);
+  top: calc(25vh / 2);
+  left: calc((100vw - 7em) / 2);
   z-index: 1;
 
   font-family: 'PT Serif', serif;
@@ -24,6 +22,15 @@ const AnimatedButton = styled(animated.button)`
   background-color: #a2ca55;
   box-shadow: 0px 2px 10px 0px black;
   outline: none;
+
+  @media (min-width: 768px) {
+    left: ${(props) =>
+      props.$hasBusiness
+        ? 'calc(100vw / 3 / 2 - 2.75em)'
+        : 'calc((100vw - 8em) / 2)'};
+    top: calc(90vh / 3 / 2);
+    background-color: #dca452;
+  }
 `;
 
 export const GenerateButton = () => {
@@ -33,8 +40,10 @@ export const GenerateButton = () => {
     allBusinesses,
     business,
   } = useContext(BusinessContext);
+  const hasBusiness = business ? true : false;
+
   const handleClick = () => {
-    const randomBusiness: YelpBusiness = pickRandomBusiness(allBusinesses);
+    const randomBusiness = pickRandomBusiness(allBusinesses);
     getBusinessDetails(randomBusiness);
   };
 
@@ -43,6 +52,7 @@ export const GenerateButton = () => {
     x: isFetchingBusiness ? 1 : 0,
     config: { duration: 1000 },
   });
+
   const bounce = {
     transform: x
       .interpolate({
@@ -51,13 +61,15 @@ export const GenerateButton = () => {
       })
       .interpolate((x) => `scale(${x})`),
   };
+
   return (
-    <AnimatedButton type="button" onClick={handleClick} style={bounce}>
-      {!business
-        ? `Feed me!`
-        : isFetchingBusiness === true
-        ? '?'
-        : business.name}
+    <AnimatedButton
+      type="button"
+      onClick={handleClick}
+      style={bounce}
+      $hasBusiness={hasBusiness}
+    >
+      {!business ? `Feed me!` : isFetchingBusiness ? '?' : business.name}
     </AnimatedButton>
   );
 };

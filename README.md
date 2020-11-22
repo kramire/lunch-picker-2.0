@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Lunch Picker 2.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Can't decide on where to grab lunch? Let MLP randomly pick for you!
 
-## Available Scripts
+See a live demo [here](https://xenodochial-lewin-8ab7a8.netlify.app/)
+Make sure to try on mobile as well!
 
-In the project directory, you can run:
+New York offers a wide range of options on where to eat out, order delivery, or just pick up something to eat. Midtown Lunch Picker makes it easy and fun to select a spot by randomly picking from a curated list of restaurants in Midtown Manhattan. Take a look at the photos, cuisine type, and reviews, to help you decide - otherwise generate another random choice.
 
-### `npm start`
+_This is Version 2 of [Midtown Lunch Picker](https://github.com/kramire/midtown-lunch-picker). The following refactors were made:_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- _Now using Typescript_
+- _Remove self-made server. Now using Serverless Functions for API calls._
+- _Mobile-First Design. CSS is responsive for both mobile and larger screens._
+- _Replace Sass with Styled Components_
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequesities
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Yelp API Key
+- List of locations with Yelp ID's and Names
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Begin by forking this repository, and cloning to your computer.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Prepare a `.env` file following the `.env.example` example.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Install the necessary dependencies by running `npm i`.
 
-### `npm run eject`
+4. To add more locations, update the `locations.json` file in teh `assests` folder. This is a dataset of restaurants and their yelp_id's that the app will used to randomly select a place. The yelp_id's can be obtained by using the Yelp API.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### To Start
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To configure and start the serverless functions, run `npm run lambda`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To start the frontend app, run `npm run start`. This will build the React app, and open it in the browser.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Tech Stack
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React - frontend framework
+- React Context - state management
+- Typescript - typing
+- Yelp API - for location details
+- Axios & Netlify Serverless Functions - API calls (Netlify handles CORS)
+- Styled Components, react-spring - styling
