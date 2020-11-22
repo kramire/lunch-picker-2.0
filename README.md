@@ -1,11 +1,14 @@
 # Lunch Picker 2.0
 
-Can't decide on where to grab lunch? Let MLP randomly pick for you!
+Can't decide on where to grab lunch? Let Lunch Picker 2.0 randomly pick for you!
 
 See a live demo [here](https://xenodochial-lewin-8ab7a8.netlify.app/)
 Make sure to try on mobile as well!
 
-New York offers a wide range of options on where to eat out, order delivery, or just pick up something to eat. Midtown Lunch Picker makes it easy and fun to select a spot by randomly picking from a curated list of restaurants in Midtown Manhattan. Take a look at the photos, cuisine type, and reviews, to help you decide - otherwise generate another random choice.
+Many towns and cities are full of places to eat. How does one decide where to go when there are so many options? That's where Lunch Picker comes in!
+
+Lunch Picker makes it easy to pick an eatery by selecting a location at random. Take a look at the establishment's photos, cuisine type, and reviews, to help you decide if this is the spot for you - otherwise generate another random choice.
+The demo above works off a list of several restaurants in Midtown Manhattan. 
 
 _This is Version 2 of [Midtown Lunch Picker](https://github.com/kramire/midtown-lunch-picker). The following refactors were made:_
 
